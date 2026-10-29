@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#e7f8f5" />
+  <title>Домашнє завдання — буква З</title>
+  <style>
+    :root { --ink:#253f58; --muted:#678097; --aqua:#36b9b0; --aquaDark:#168f8a; --sky:#d8f2fc; --mint:#e9fbf4; --cream:#fff9e6; --orange:#ffc75a; --line:#d9e8e9; --white:#fff; --shadow:0 18px 48px rgba(31,90,112,.11); }
+    *,*::before,*::after {box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; color:var(--ink); background: radial-gradient(circle at 14% 12%, #fff3cc 0 3px, transparent 4px), radial-gradient(circle at 87% 22%, #b9efe9 0 5px, transparent 6px), radial-gradient(circle at 12% 73%, #bcdff7 0 4px, transparent 5px), linear-gradient(155deg,#e7f8f5 0%,#f5fcff 50%,#fffdf0 100%);background-size:220px 220px,310px 310px,280px 280px,cover;min-height:100vh;font-family:ui-rounded,"Trebuchet MS",Arial,sans-serif;}
+    button{font:inherit;cursor:pointer}button:focus-visible{outline:4px solid #f5b943;outline-offset:3px}
+    .page{width:min(1090px,calc(100% - 32px));margin:0 auto;padding:25px 0 60px}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:23px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;letter-spacing:.2px}.brand-mark{display:grid;place-items:center;width:40px;height:40px;border-radius:15px;background:#fff;box-shadow:0 5px 15px #2b95831a;font-size:22px}
+    .chip{background:#fff;border:1px solid #d5eae7;padding:9px 15px;border-radius:999px;font-size:14px;font-weight:800;color:#4e7880}
+    .hero{display:grid;grid-template-columns:1.4fr .72fr;align-items:center;gap:20px;background:#fff;border:1px solid #e5f2f2;border-radius:35px;padding:34px 39px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .hero::after{content:"";position:absolute;right:16%;top:-92px;width:240px;height:240px;background:#f1fff2;border-radius:50%;pointer-events:none}
+    .hero-copy,.hero-art{position:relative;z-index:1}
+    .eyebrow{font-size:14px;letter-spacing:1.8px;text-transform:uppercase;font-weight:900;color:var(--aquaDark)}
+    h1{font-size:clamp(35px,5vw,62px);line-height:1.1;letter-spacing:-1.5px;margin:11px 0 14px;font-weight:900}h1 .z{color:var(--aquaDark)}
+    .hero p{font-size:17px;line-height:1.5;max-width:530px;color:var(--muted);margin:0}
+    .hero-art{display:flex;justify-content:center;align-items:center;min-height:195px}
+    .star-big{width:195px;aspect-ratio:1;filter:drop-shadow(0 14px 0 #f5c85c70);transform:rotate(-8deg);animation:rock 4s ease-in-out infinite}
+    @keyframes rock{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(4deg)}}
+    .hero-decor{position:absolute;font-size:30px}.d1{left:9%;top:14%}.d2{right:1%;bottom:5%}.d3{right:8%;top:2%;font-size:19px}
+    .progress-card{margin:20px 0 25px;display:flex;align-items:center;gap:15px;background:#effcf8;border:1px solid #cdeee7;border-radius:21px;padding:16px 20px;flex-wrap:wrap}
+    .progress-title{font-weight:900;font-size:16px;min-width:165px}.progress-track{background:#d2ece7;border-radius:999px;height:15px;flex:1;min-width:125px;overflow:hidden}.progress-fill{width:0%;height:100%;background:linear-gradient(90deg,#47c4b5,#80d9a2);transition:width .4s ease;border-radius:999px}
+    .progress-value{font-size:16px;font-weight:900;white-space:nowrap;color:#167f76}
+    .panel{background:#fff;border-radius:30px;border:1px solid #e0eeee;box-shadow:var(--shadow);padding:30px;margin-top:24px}
+    .section-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px}.step{width:51px;height:51px;flex:none;display:grid;place-items:center;background:#dcf8f3;color:#129486;border-radius:16px;font-size:24px;font-weight:900}
+    h2{font-size:clamp(24px,3vw,30px);line-height:1.15;letter-spacing:-.5px;margin:0 0 7px;font-weight:900}.section-head p{margin:0;color:var(--muted);font-size:16px;line-height:1.4}
+    .syllable-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+    .syllable{position:relative;background:#f2fbfe;border:2px solid #d9eef5;border-bottom:5px solid #c1e2ee;color:var(--ink);border-radius:22px;min-height:124px;display:flex;justify-content:center;align-items:center;flex-direction:column;gap:8px;transition:transform .18s,background .18s,border-color .18s}.syllable:hover{transform:translateY(-3px)}.syllable:active{transform:translateY(1px)}
+    .syllable .letters{font-size:clamp(35px,4.5vw,54px);font-weight:900;letter-spacing:0}.syllable .letters b{color:#14998f}.syllable .tick{position:absolute;right:10px;top:8px;font-size:20px;color:#17a88b;opacity:0;transition:.2s}.syllable.done{background:#e9fbec;border-color:#91dec0;border-bottom-color:#65c89d}.syllable.done .tick{opacity:1}
+    .helper-line{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;color:var(--muted);font-weight:800;font-size:14px;margin-top:20px}
+    .small-action{border:1px solid #cce7e7;border-radius:13px;background:#fff;padding:10px 16px;color:#348186;font-weight:900}.small-action:hover{background:#eefbf8}
+    .word-area{background:linear-gradient(145deg,#f0fafa,#fffbed);border:2px dashed #d4e8e7;border-radius:28px;min-height:285px;padding:24px 18px 19px;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative;overflow:hidden}
+    .word-area::before,.word-area::after{content:"✦";position:absolute;color:#f2c95f;font-size:31px}.word-area::before{left:9%;top:18%}.word-area::after{right:9%;bottom:18%;font-size:25px;color:#7ed7c6}
+    .word-counter{font-size:14px;color:#598a8c;font-weight:900;letter-spacing:1px;position:relative;z-index:1}.word-display{font-size:clamp(57px,10vw,106px);font-weight:900;line-height:1.3;letter-spacing:2px;text-align:center;word-break:break-word;position:relative;z-index:1;margin:7px 0 0}
+    .word-display .z-letter{color:#159c92}.word-hint{font-size:clamp(26px,4vw,36px);font-weight:900;letter-spacing:2px;color:#348392;min-height:49px;position:relative;z-index:1;text-align:center}.word-hint.is-hidden{opacity:0;pointer-events:none}
+    .word-tools{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:20px 0 0}
+    .action{border-radius:16px;border:none;padding:15px 25px;font-size:17px;font-weight:900;min-height:55px;transition:transform .15s,filter .15s}.action:hover{filter:brightness(.98);transform:translateY(-2px)}.action:active{transform:translateY(0)}.primary{color:#fff;background:#20a89d;box-shadow:0 6px 0 #138b81}.secondary{background:#fff;color:#267f88;border:2px solid #cfebec}.outline{background:#f7fcff;color:#54788b;border:2px solid #dbeaf1}.action:disabled{opacity:.5;cursor:not-allowed;transform:none}
+    .word-foot{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:20px}.dot{height:11px;width:11px;border-radius:50%;background:#dbe8eb;transition:.25s}.dot.current{width:26px;background:#81d7c6;border-radius:100px}.dot.done{background:#f2bf4c}
+    .finish{display:none;margin-top:22px;padding:18px;background:#fef9e6;border:1px solid #f6e9b4;border-radius:20px;text-align:center;font-size:18px;font-weight:900;line-height:1.6}.finish.visible{display:block}
+    .bottom{display:flex;justify-content:center;margin:30px 0 0}.reset{background:transparent;border:0;color:#6a8b94;font-size:14px;font-weight:800;text-decoration:underline;text-underline-offset:4px;padding:8px 13px}
+    .screenreader{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+    .confetti{position:fixed;pointer-events:none;z-index:20;font-size:24px;animation:confettiFall 1.6s ease-out forwards}@keyframes confettiFall{0%{transform:translateY(-15px) rotate(0);opacity:1}100%{transform:translateY(260px) rotate(340deg);opacity:0}}
+    @media(max-width:750px){.hero{grid-template-columns:1fr;padding:26px;gap:0}.hero-art{min-height:145px}.star-big{width:145px}.hero p{font-size:16px}.syllable-grid{grid-template-columns:repeat(3,1fr)}.panel{padding:23px}.section-head{gap:12px}}
+    @media(max-width:420px){.page{width:calc(100% - 20px)}.panel{padding:19px;border-radius:24px}.syllable-grid{gap:9px}.syllable{min-height:104px;border-radius:17px}.syllable .letters{font-size:39px}.word-area{min-height:260px;padding:16px 8px}.action{padding:13px 16px;flex:1;font-size:15px}.word-tools{gap:8px}.top{gap:9px}.chip{font-size:12px}.brand{font-size:15px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="top"><div class="brand"><span class="brand-mark" aria-hidden="true">🌟</span> Зоряна читанка</div><span class="chip">Домашнє завдання · Буква З</span></div>
+    <header class="hero">
+      <div class="hero-copy"><div class="eyebrow">Маленькі кроки до читання</div><h1>Дружимо з <span class="z">буквою З!</span></h1><p>Прочитай склади, а потім — слова. Натискай на те, що вже прочитав або прочитала, та збирай зірочки! ✨</p></div>
+      <div class="hero-art" aria-hidden="true"><span class="hero-decor d1">✧</span><span class="hero-decor d2">✦</span><span class="hero-decor d3">✧</span>
+        <svg class="star-big" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m100 11 24 51 57 8-41 40 10 56-50-27-50 27 10-56-41-40 57-8 24-51Z" fill="#FFD36F" stroke="#F3B951" stroke-width="5" stroke-linejoin="round"/><ellipse cx="75" cy="95" rx="6" ry="8" fill="#34566B"/><ellipse cx="126" cy="95" rx="6" ry="8" fill="#34566B"/><path d="M85 118q15 16 30 0" stroke="#34566B" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="111" r="9" fill="#FFAA93" opacity=".58"/><circle cx="141" cy="111" r="9" fill="#FFAA93" opacity=".58"/></svg>
+      </div>
+    </header>
+
+    <div class="progress-card" aria-label="Загальний прогрес виконання"><div class="progress-title">⭐ Твої зірочки</div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-value" id="progressText">0 із 14</div></div>
+
+    <section class="panel" aria-labelledby="syllablesTitle"><div class="section-head"><span class="step">1</span><div><h2 id="syllablesTitle">Читаємо склади</h2><p>Прочитай кожен склад уголос і натисни на нього. Починай з букви <strong>З</strong>.</p></div></div>
+      <div class="syllable-grid" id="syllableGrid"></div>
+      <div class="helper-line"><span id="syllableStatus" role="status">Прочитано 0 із 6 складів</span><button type="button" class="small-action" id="hearSyllables">🔊 Послухати склади</button></div>
+    </section>
+
+    <section class="panel" aria-labelledby="wordsTitle" id="wordPanel"><div class="section-head"><span class="step">2</span><div><h2 id="wordsTitle">Читаємо слова</h2><p>Спробуй прочитати ціле слово. Якщо складно — натисни «Підказка».</p></div></div>
+      <div class="word-area"><div class="word-counter" id="wordCount">СЛОВО 1 ІЗ 8</div><div class="word-display" id="wordDisplay" aria-live="polite">зима</div><div class="word-hint is-hidden" id="wordHint" aria-live="polite">зи-ма</div></div>
+      <div class="word-tools"><button type="button" class="action secondary" id="hintButton" aria-expanded="false">💡 Підказка</button><button type="button" class="action primary" id="nextButton">⭐ Прочитано! Далі</button><button type="button" class="action outline" id="backButton" aria-label="Повернутися до попереднього слова">← Назад</button></div>
+      <div class="word-foot" id="wordDots" aria-label="Прогрес слів"></div>
+      <div class="finish" id="finishMessage" role="status">🎉 Ура! Усі слова прочитано! Ти справжня зірочка читання! ⭐</div>
+    </section>
+    <div class="bottom"><button type="button" class="reset" id="resetButton">↻ Почати домашнє завдання спочатку</button></div>
+  </main>
+  <script>
+    (() => {
+      'use strict';
+      const syllables = ['за', 'зо', 'зу', 'зи', 'зі', 'зе'];
+      const words = [
+        {word:'зима', parts:'зи-ма'}, {word:'зона', parts:'зо-на'},
+        {word:'лоза', parts:'ло-за'}, {word:'золото', parts:'зо-ло-то'},
+        {word:'сани', parts:'са-ни'}, {word:'мило', parts:'ми-ло'},
+        {word:'ліс', parts:'ліс'}, {word:'місто', parts:'мі-сто'}
+      ];
+      const key = 'zoryana-chytanka-z-v1';
+      const $ = (id) => document.getElementById(id);
+      const fresh = () => ({readSyllables:[], readWords:[],current:0,hint:false});
+      let state = fresh();
+      try {
+        const saved = JSON.parse(localStorage.getItem(key) || 'null');
+        if(saved && Array.isArray(saved.readSyllables) && Array.isArray(saved.readWords)){
+          state.readSyllables = saved.readSyllables.filter(s => syllables.includes(s));
+          state.readWords = saved.readWords.filter(s => words.some(w=>w.word===s));
+          state.current = Math.min(words.length-1, Math.max(0, Number(saved.current)||0));
+        }
+      } catch(e) { /* Works even when browser storage is unavailable. */ }
+      function save(){try{localStorage.setItem(key,JSON.stringify({...state,hint:false}));}catch(e){}}
+      function confetti(){
+        const chars=['⭐','✦','✨','🌟'];
+        for(let i=0;i<16;i++){
+          let s=document.createElement('span');s.className='confetti';s.textContent=chars[i%chars.length];s.style.left=(8+Math.random()*84)+'vw';s.style.top=(8+Math.random()*22)+'vh';s.style.animationDelay=(Math.random()*.35)+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),2100);
+        }
+      }
+      function say(text){
+        if(!('speechSynthesis' in window)) {alert('На цьому пристрої озвучення недоступне. Спробуй прочитати склади уголос!');return;}
+        speechSynthesis.cancel();
+        const msg=new SpeechSynthesisUtterance(text);msg.lang='uk-UA';msg.rate=.78;msg.pitch=1.08;
+        const voices=speechSynthesis.getVoices();const uk=voices.find(v=>/^uk([-_]|$)/i.test(v.lang));if(uk)msg.voice=uk;
+        speechSynthesis.speak(msg);
+      }
+      function updateProgress(){
+        const total=syllables.length+words.length;
+        const amount=state.readSyllables.length+state.readWords.length;
+        $('progressFill').style.width=(100*amount/total)+'%';
+        $('progressText').textContent=amount+' із '+total;
+        $('syllableStatus').textContent=state.readSyllables.length===syllables.length?'🌟 Усі склади прочитано!':'Прочитано '+state.readSyllables.length+' із '+syllables.length+' складів';
+        if(state.readWords.length===words.length){
+          $('finishMessage').textContent=amount===total?'🎉 Ура! Усі завдання виконано! Ти справжня зірочка читання! ⭐':'🌟 Усі слова прочитано! Залишилося відмітити склади із першого завдання.';
+          $('finishMessage').classList.add('visible');
+        } else {$('finishMessage').classList.remove('visible');}
+      }
+      function renderSyllables(){
+        const grid=$('syllableGrid');grid.replaceChildren();
+        syllables.forEach(s=>{
+          const done=state.readSyllables.includes(s);
+          const b=document.createElement('button');b.type='button';b.className='syllable'+(done?' done':'');b.setAttribute('aria-pressed',done?'true':'false');b.setAttribute('aria-label','Склад '+s+', '+(done?'прочитано':'ще не прочитано'));
+          b.innerHTML='<span class="tick" aria-hidden="true">✓</span><span class="letters"><b>з</b>'+s.slice(1)+'</span>';
+          b.addEventListener('click',()=>{
+            const wasDone=state.readSyllables.includes(s);
+            if(wasDone) state.readSyllables=state.readSyllables.filter(x=>x!==s);
+            else {state.readSyllables.push(s);if(state.readSyllables.length===syllables.length)confetti();}
+            save();renderSyllables();updateProgress();
+          });grid.appendChild(b);
+        });
+      }
+      function renderWord(){
+        const w=words[state.current];
+        $('wordCount').textContent='СЛОВО '+(state.current+1)+' ІЗ '+words.length;
+        $('wordDisplay').innerHTML=w.word.replace(/з/g,'<span class="z-letter">з</span>');
+        $('wordHint').textContent=w.parts;
+        $('wordHint').classList.toggle('is-hidden',!state.hint);
+        $('hintButton').textContent=state.hint?'🙈 Сховати підказку':'💡 Підказка';
+        $('hintButton').setAttribute('aria-expanded',String(state.hint));
+        $('backButton').disabled=state.current===0;
+        $('nextButton').textContent=state.current===words.length-1?'⭐ Прочитано! Готово':'⭐ Прочитано! Далі';
+        const dots=$('wordDots');dots.replaceChildren();
+        words.forEach((item,i)=>{
+          const dot=document.createElement('button');dot.type='button';dot.className='dot'+(state.readWords.includes(item.word)?' done':'')+(i===state.current?' current':'');dot.setAttribute('aria-label','Перейти до слова '+(i+1)+(state.readWords.includes(item.word)?', прочитано':''));dot.title=item.word;dot.style.border='0';dot.style.padding='0';dot.addEventListener('click',()=>{state.current=i;state.hint=false;save();renderWord()});dots.appendChild(dot);
+        });
+      }
+      $('hearSyllables').addEventListener('click',()=>say(syllables.join(' ... ')));
+      $('hintButton').addEventListener('click',()=>{state.hint=!state.hint;renderWord()});
+      $('nextButton').addEventListener('click',()=>{
+        const word=words[state.current].word;const wasDone=state.readWords.includes(word);
+        if(!wasDone)state.readWords.push(word);
+        const wasLast=state.current===words.length-1;
+        if(!wasLast)state.current++;
+        else if(state.readWords.length===words.length && state.readSyllables.length===syllables.length)confetti();
+        else if(state.readWords.length===words.length)confetti();
+        state.hint=false;save();renderWord();updateProgress();
+      });
+      $('backButton').addEventListener('click',()=>{if(state.current>0){state.current--;state.hint=false;save();renderWord()}});
+      $('resetButton').addEventListener('click',()=>{
+        state=fresh();save();$('finishMessage').textContent='🎉 Ура! Усі слова прочитано! Ти справжня зірочка читання! ⭐';
+        renderSyllables();renderWord();updateProgress();window.scrollTo({top:0,behavior:'smooth'});
+      });
+      renderSyllables();renderWord();updateProgress();
+    })();
+  </script>
+</body>
+</html>
